@@ -1,0 +1,468 @@
+/* ============================= Q-ROUTE DESIGN TOKENS ============================= */
+:root {
+  --qr-primary: #006c49;
+  --qr-primary-light: #10b981;
+  --qr-primary-mint: #6ffbbe;
+  --qr-primary-soft: rgba(111, 251, 190, 0.3);
+  --qr-bg: #f7f9fb;
+  --qr-surface: #ffffff;
+  --qr-surface-alt: #f2f4f6;
+  --qr-surface-muted: #eceef0;
+  --qr-border: #e6e8ea;
+  --qr-border-strong: #e0e3e5;
+  --qr-text-1: #191c1e;
+  --qr-text-2: #3c4a42;
+  --qr-text-3: #6c7a71;
+  --qr-text-faint: #bbcabf;
+  --qr-danger: #ba1a1a;
+  --qr-danger-dark: #93000a;
+  --qr-danger-bg: #ffdad6;
+  --qr-blue: #0053db;
+  --qr-blue-dark: #00174b;
+  --qr-blue-bg: #dae2fd;
+  --qr-blue-bg-2: #eff6ff;
+  --qr-gray-badge: #5c647a;
+  --qr-warn-bg: #fffbeb;
+  --qr-warn-text: #92400e;
+
+  --qr-radius-xs: 4px;
+  --qr-radius-sm: 8px;
+  --qr-radius-md: 14px;
+  --qr-radius-lg: 18px;
+  --qr-radius-xl: 24px;
+  --qr-radius-pill: 9999px;
+
+  --qr-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --qr-shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.05);
+  --qr-shadow-md: 0 4px 14px rgba(0, 0, 0, 0.07);
+  --qr-shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+  --qr-shadow-xl: 0 20px 35px rgba(0, 0, 0, 0.12);
+
+  --qr-font: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--qr-font);
+  background-color: #0f172a;
+  color: var(--qr-text-1);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-viewport {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ============================= UNIVERSAL MOBILE APP CONTAINER ============================= */
+/* Completely removes any iPhone mockup / notch / fake frame. 
+   Works 100% naturally on ANY phone (Android, Samsung, Pixel, OnePlus, Xiaomi, iOS, etc.) */
+.app-container {
+  width: 100%;
+  max-width: 460px;
+  height: 100vh;
+  height: 100dvh; /* Dynamic viewport height adjusts for mobile browser address bars */
+  background-color: var(--qr-bg);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+/* Real mobile devices and phone viewports */
+@media (max-width: 640px) {
+  html, body {
+    background-color: var(--qr-bg);
+  }
+  .app-viewport {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+  }
+  .app-container {
+    max-width: 100vw;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+  }
+}
+
+/* Desktop and tablet devices: 100% full height from top to bottom */
+@media (min-width: 641px) {
+  body {
+    background: #0f172a;
+  }
+  .app-container {
+    height: 100vh;
+    height: 100dvh;
+    max-height: 100vh;
+    border-radius: 0;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* ============================= FIXED TOP APP HEADER ============================= */
+/* Permanently fixed at the top of the screen on any phone */
+.app-fixed-header {
+  height: 56px;
+  padding: 0 16px;
+  padding-top: env(safe-area-inset-top, 0px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--qr-border);
+  flex-shrink: 0;
+  z-index: 50;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.app-header-logo {
+  display: flex;
+  align-items: center;
+  height: 26px;
+  cursor: pointer;
+}
+
+.app-header-logo img {
+  height: 26px;
+  width: auto;
+  object-fit: contain;
+}
+
+.app-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.app-screens-pill-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #f1f5f9;
+  border: 1px solid var(--qr-border);
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--qr-text-2);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.app-screens-pill-btn:hover {
+  background: #e2e8f0;
+  color: var(--qr-primary);
+}
+
+.app-screens-pill-btn:active {
+  transform: scale(0.96);
+}
+
+.app-icon-round-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--qr-text-2);
+  background: #f1f5f9;
+  border: 1px solid var(--qr-border);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.app-icon-round-btn:hover {
+  background: #e2e8f0;
+}
+
+.app-user-avatar-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--qr-primary);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 108, 73, 0.25);
+  transition: transform 0.15s ease;
+}
+
+.app-user-avatar-btn:active {
+  transform: scale(0.95);
+}
+
+/* ============================= SCROLLABLE MIDDLE SCREEN BODY ============================= */
+/* Only this middle area scrolls smoothly, while the top bar and bottom bar stay 100% fixed */
+.app-scroll-body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+  position: relative;
+  background-color: var(--qr-bg);
+}
+
+.app-scroll-body::-webkit-scrollbar {
+  width: 4px;
+}
+.app-scroll-body::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+
+.screen-content {
+  padding: 14px 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ============================= FIXED BOTTOM NAVIGATION BAR ============================= */
+/* Permanently fixed at the bottom of the screen, never scrolls away */
+.app-fixed-tabbar {
+  height: 60px;
+  padding: 0 4px;
+  padding-bottom: max(6px, env(safe-area-inset-bottom, 6px));
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--qr-border);
+  flex-shrink: 0;
+  z-index: 50;
+  box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.04);
+}
+
+/* ============================= SCREEN SWITCHER OVERLAY ============================= */
+.screen-switcher-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 62px 14px 14px;
+}
+
+.screen-switcher-menu {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 10px;
+  width: 250px;
+  max-width: 90vw;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 75vh;
+  overflow-y: auto;
+  animation: modalPop 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.tab-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-height: 46px;
+  position: relative;
+  color: var(--qr-text-2);
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.tab-btn-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: -0.1px;
+}
+
+.tab-btn.is-active {
+  color: var(--qr-primary);
+}
+
+.tab-btn.is-active::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  width: 14px;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--qr-primary);
+}
+
+.tab-badge-dot {
+  position: absolute;
+  top: 3px;
+  right: calc(50% - 13px);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--qr-danger);
+  box-shadow: 0 0 0 2px #fff;
+}
+
+/* ============================= SHARED CARD & BUTTON STYLES ============================= */
+.card {
+  background: var(--qr-surface);
+  border-radius: var(--qr-radius-md);
+  border: 1px solid var(--qr-border);
+  box-shadow: var(--qr-shadow-xs);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  box-shadow: var(--qr-shadow-sm);
+}
+
+.btn-primary-green {
+  background: var(--qr-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--qr-radius-md);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.btn-primary-green:hover {
+  background: #005a3c;
+}
+
+.btn-primary-green:active {
+  transform: scale(0.98);
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--qr-primary-light);
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+@keyframes slideUpToast {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.qr-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(255,255,255,0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+  display: inline-block;
+}
+
+/* Leaflet map styles */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  font-family: var(--qr-font);
+}
+
+.bhopal-marker-icon {
+  background: transparent !important;
+  border: none !important;
+}

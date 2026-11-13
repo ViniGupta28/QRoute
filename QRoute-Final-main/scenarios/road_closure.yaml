@@ -1,0 +1,122 @@
+name: road_closure
+description: Full closure of critical arterial link R17 triggering immediate rerouting.
+duration_sec: 300.0
+random_seed: 42
+vehicle_count: 20
+background_traffic_level: 0.3
+is_peak_hour: false
+basis: Scenario based on a documented Bhopal congestion/disruption corridor
+incidents:
+- id: inc_closure_01
+  type: road closure
+  affected_edges:
+  - R17
+  severity: 1.0
+  start_time: 50.0
+  end_time: 300.0
+  speed_multiplier: 0.0
+  closed: true
+  source: Simulated event injection
+  description: Complete closure of R17 (MP Nagar to Board Office) due to emergency
+    infrastructure maintenance
+vehicle_requests:
+- vehicle_id: veh_003
+  origin: rani_kamlapati
+  destination: board_office
+  depart_time_sec: 3.6
+  vehicle_type: passenger
+- vehicle_id: veh_002
+  origin: mp_nagar
+  destination: bhadbhada
+  depart_time_sec: 10.4
+  vehicle_type: passenger
+- vehicle_id: veh_010
+  origin: depot_square
+  destination: mp_nagar
+  depart_time_sec: 11.1
+  vehicle_type: passenger
+- vehicle_id: veh_013
+  origin: nadra
+  destination: bhadbhada
+  depart_time_sec: 15.0
+  vehicle_type: passenger
+- vehicle_id: veh_001
+  origin: rang_mahal
+  destination: roshanpura
+  depart_time_sec: 16.7
+  vehicle_type: passenger
+- vehicle_id: veh_009
+  origin: depot_square
+  destination: jawahar_chowk
+  depart_time_sec: 18.7
+  vehicle_type: passenger
+- vehicle_id: veh_005
+  origin: board_office
+  destination: bhadbhada
+  depart_time_sec: 23.9
+  vehicle_type: passenger
+- vehicle_id: veh_006
+  origin: bhadbhada
+  destination: rani_kamlapati
+  depart_time_sec: 26.5
+  vehicle_type: passenger
+- vehicle_id: veh_018
+  origin: mp_nagar
+  destination: rani_kamlapati
+  depart_time_sec: 33.4
+  vehicle_type: passenger
+- vehicle_id: veh_019
+  origin: depot_square
+  destination: new_market
+  depart_time_sec: 44.4
+  vehicle_type: passenger
+- vehicle_id: veh_004
+  origin: rang_mahal
+  destination: roshanpura
+  depart_time_sec: 60.6
+  vehicle_type: passenger
+- vehicle_id: veh_014
+  origin: rani_kamlapati
+  destination: mp_nagar
+  depart_time_sec: 66.2
+  vehicle_type: passenger
+- vehicle_id: veh_015
+  origin: roshanpura
+  destination: depot_square
+  depart_time_sec: 69.3
+  vehicle_type: passenger
+- vehicle_id: veh_016
+  origin: mp_nagar
+  destination: board_office
+  depart_time_sec: 79.4
+  vehicle_type: passenger
+- vehicle_id: veh_008
+  origin: board_office
+  destination: new_market
+  depart_time_sec: 83.8
+  vehicle_type: passenger
+- vehicle_id: veh_000
+  origin: mp_nagar
+  destination: board_office
+  depart_time_sec: 89.0
+  vehicle_type: passenger
+- vehicle_id: veh_012
+  origin: roshanpura
+  destination: jawahar_chowk
+  depart_time_sec: 96.9
+  vehicle_type: passenger
+- vehicle_id: veh_007
+  origin: roshanpura
+  destination: jawahar_chowk
+  depart_time_sec: 97.1
+  vehicle_type: passenger
+- vehicle_id: veh_011
+  origin: mp_nagar
+  destination: depot_square
+  depart_time_sec: 101.7
+  vehicle_type: passenger
+- vehicle_id: veh_017
+  origin: jawahar_chowk
+  destination: mp_nagar
+  depart_time_sec: 102.6
+  vehicle_type: passenger
